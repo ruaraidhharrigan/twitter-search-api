@@ -2,3 +2,4 @@ twscrape
 fastapi
 uvicorn
 python-dotenv
+vaderSentiment
