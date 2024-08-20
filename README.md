@@ -89,6 +89,7 @@ Example response
 ```json
 {
     "query": "eth",
+    "overall_sentiment": "pos"
     "tweets": [
         {
             "date": "2024-08-20T14:14:18+00:00",
@@ -99,12 +100,17 @@ Example response
             "reply_count": 0,
             "quote_count": 0,
             "like_count": 0,
-            "bookmark_count": 0
+            "bookmark_count": 0,
+            "sentiment": {}
         },
         ...
     ]
 }
 ```
+
+### Updates
+
+2024-08-20 : Sentiment analysis added to the tweet searches.
 
 ### License
 
