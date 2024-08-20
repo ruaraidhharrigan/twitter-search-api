@@ -1,6 +1,6 @@
 import os
 import asyncio
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from twscrape import API, gather
 from dotenv import load_dotenv
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -35,10 +35,21 @@ def classify_sentiment(compound_score):
         return "neu"
 
 @app.get("/search")
-async def search_tweets(query: str):
+async def search_tweets(query: str, limit: int = Query(20, ge=1, le=100), product: str = Query("Top")):
+    """
+    Search tweets with optional limit and product query parameters.
+
+    Args:
+        query (str): The search query.
+        limit (int): The maximum number of tweets to fetch (default is 20).
+        product (str): The search type, can be "Top", "Latest", or "Media" (default is "Top").
+
+    Returns:
+        JSON response containing the tweets and their sentiment analysis.
+    """
     try:
-        # Fetch tweets using the search query
-        tweets = await gather(api.search(query, limit=20, kv={"product": "Top"}))
+        # Fetch tweets using the search query with the given limit and product type
+        tweets = await gather(api.search(query, limit=limit, kv={"product": product}))
 
         filtered_tweets = []
         sentiment_scores = {"pos": 0, "neu": 0, "neg": 0}
