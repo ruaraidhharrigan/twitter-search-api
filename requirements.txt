@@ -1,0 +1,4 @@
+twscrape
+fastapi
+uvicorn
+python-dotenv
