@@ -1,6 +1,6 @@
-# Twitter Scraper API
+# Twitter Search API
 
-This project is a FastAPI-based REST API that fetches tweets based on a search query using the `twscrape` library. It is designed to be clean, maintainable, and scalable.
+This project is a FastAPI-based REST API that fetches tweets based on a search query using the `twscrape` and `vadersentiment` libraries. It is designed to be clean, maintainable, and scalable.
 
 ## Table of Contents
 
